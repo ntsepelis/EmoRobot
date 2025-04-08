@@ -17,7 +17,7 @@
 ### Συνδέσεις
 
 Συνδέστε τα pins της οθόνης στα pins του Raspberry Pi σύμφωνα με τον ακόλουθο πίνακα.
-| LCD	| Raspberry Pi (BCM2835) | Raspberry Pi (Σύμβολο / Αριθμός Pin) |
+| LCD	| Raspberry Pi \ (BCM2835) | Raspberry Pi (Σύμβολο / Αριθμός Pin) |
 | --- | --- |  --- |
 | VCC	| 3.3V | 3.3V |
 | GND	| GND | GND |
@@ -33,47 +33,70 @@
 
 ### SPI interface
 
-PS: If you are using the system of the Bullseye branch, you need to change "apt-get" to "apt", the system of the Bullseye branch only supports Python3. 
-Open terminal, use command to enter the configuration page
-sudo raspi-config
-Choose Interfacing Options -> SPI -> Yes  to enable SPI interface
+1.	Στη γραμμή εντολών πληκτρολογούμε \
+**`sudo raspi-config`**\
+και στην οθόνη του υπολογιστή εμφανίζεται το ακόλουθο μενού
  
+2.	Χρησιμοποιώντας από το πληκτρολόγιο τα βέλη επιλέγουμε το **3  Interface Options** και πατάμε **Enter**.
  
+3.	Στη συνέχεια χρησιμοποιώντας από το πληκτρολόγιο τα βέλη επιλέγουμε το **Ι5  I2C** και πατάμε **Enter**.
  
-Reboot Raspberry Pi：
-sudo reboot
-Please make sure the SPI is not occupied by other devices, you can check in the middle of /boot/config.txt
-Install Library
-If you use bookworm system, only the lgpio library is available, bcm2835 and wiringPi libarary cannot be installed or used. Please note that the python library does not need to install, you can directly run the demo. 
-BCM2835
-#Open the Raspberry Pi terminal and run the following command
-wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.71.tar.gz
-tar zxvf bcm2835-1.71.tar.gz 
-cd bcm2835-1.71/
-sudo ./configure && sudo make && sudo make check && sudo make install
-# For more, you can refer to the official website at: http://www.airspayce.com/mikem/bcm2835/
-WiringPi
-#Open the Raspberry Pi terminal and run the following command
-cd
-sudo apt-get install wiringpi
-#For Raspberry Pi systems after May 2019 (earlier than that can be executed without), an upgrade may be required:
-wget https://project-downloads.drogon.net/wiringpi-latest.deb
-sudo dpkg -i wiringpi-latest.deb
-gpio -v
-# Run gpio -v and version 2.52 will appear, if it doesn't it means there was an installation error
+4.	Εμφανίζεται το ακόλουθο μήνυμα, στο οποίο επιλέγουμε **\<Yes\>**.
+ 
+5.	Όταν ολοκληρωθεί η ενεργοποίηση λαμβάνουμε μήνυμα επιτυχίας και πατάμε **\<OK\>**.
+ 
+6.	Η διαδικασία έχει ολοκληρωθεί, οπότε επιλέγουμε **\<Finish\>**, χρησιμοποιώντας το **tab**.
+ 
+7.	Επανεκκινούμε τον υπολογιστή
 
-# Bullseye branch system using the following command:
-git clone https://github.com/WiringPi/WiringPi
-cd WiringPi
-. /build
-gpio -v
-# Run gpio -v and version 2.70 will appear, if it doesn't it means there was an installation error
-lgpio
+8.	Μετά την επανεκκίνηση, sτη γραμμή εντολών εισάγουμε διαδοχικά τις ακόλουθες εντολές 
+ 
+ 
+### Εγκατάσταση Βιβλιοθηκών
+
+#### BCM2835
+1. Στον browser της επιλογής σας εισάγετε τη διεύθυνση \
+http://www.airspayce.com/mikem/bcm2835/bcm2835-1.71.tar.gz \
+Θα μεταφορτωθεί το συμπιεσμένο αρχείο bcm2835-1.71.tar.gz, το οποίο και θα πρέπει να εξάγετε στην επιφάνεια εργασίας
+2. Στη συνέχεια εισάγετε στη γραμμή εντολών κατά σειρά \
+**`cd bcm2835-1.71`** \
+(για να βρεθείτε στο φάκελο που αποσυμπιέστηκε και περιέχει τα κατάλληλα προς εγκατάσταση αρχεία) \
+**`sudo ./configure && sudo make && sudo make check && sudo make install`** \
+(για να εγκατασταθούν τα κατάλληλα αρχεία)
+
+#### WiringPi
+- Στη γραμμή εντολών εισάγετε την ακόλουθη εντολή \
+   **`sudo apt-get install wiringpi`**
+
+- Για νεότερα συστήματα (μετά το 2019) θα πρέπει να κατεβάσετε από τη διεύθυνση \
+**`https://project-downloads.drogon.net/wiringpi-latest.deb`** \
+- Στη συνέχεια εγκαταστείστε το αρχείο `wiringpi-latest.deb`πληκτρολογώντας \
+  **`sudo dpkg -i wiringpi-latest.deb`** \
+- Η εντολή \
+**`gpio -v`** \
+  ελέγχει αν όλα πήγαν καλά. 
+  - αν δώσει έξοδο την έκδοση 2.52 ή νεώτερη, όλα πήγαν καλά.
+  - αν όχι, κάτι πήγε λάθος
+
+- Για συστήματα Bullseye εισάγουμε διαδοχικά \
+**`git clone https://github.com/WiringPi/WiringPi `** \
+**`cd WiringPi`** \
+**`. /build `** \
+**`gpio -v`**
+- Η εντολή \
+**`gpio -v`** \
+  ελέγχει αν όλα πήγαν καλά. 
+  - αν δώσει έξοδο την έκδοση 2.52 ή νεώτερη, όλα πήγαν καλά.
+  - αν όχι, κάτι πήγε λάθος
+
+### lgpio
 wget https://github.com/joan2937/lg/archive/master.zip
 unzip master.zip
 cd lg-master
 sudo make install 
-#for more details, you can refer to https://github.com/gpiozero/lg
+for more details, you can refer to https://github.com/gpiozero/lg
+
+
 Python
 sudo apt-get update
 sudo apt-get install python3-pip
