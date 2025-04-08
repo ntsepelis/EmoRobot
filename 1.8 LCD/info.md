@@ -16,8 +16,7 @@
 
 ### Συνδέσεις
 
-Please connect the LCD to your Raspberry Pi by the 8PIN cable according to the table below.
-Use the pin header or PH2.0 8PIN interface, you need to connect according to the following table.
+Συνδέστε τα pins της οθόνης στα pins του Raspberry Pi σύμφωνα με τον ακόλουθο πίνακα.
 Connect to Raspberry Pi
 LCD	Raspberry Pi
 	BCM2835	Board
