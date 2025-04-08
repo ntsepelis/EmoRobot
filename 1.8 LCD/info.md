@@ -14,7 +14,7 @@
 
 ## ΠΕΡΙΓΡΑΦΗ ΔΙΑΤΑΞΗΣ
 
-### Raspberry Pi hardware connection
+### Συνδέσεις
 
 Please connect the LCD to your Raspberry Pi by the 8PIN cable according to the table below.
 Use the pin header or PH2.0 8PIN interface, you need to connect according to the following table.
