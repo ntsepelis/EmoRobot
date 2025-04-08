@@ -17,21 +17,22 @@
 ### Συνδέσεις
 
 Συνδέστε τα pins της οθόνης στα pins του Raspberry Pi σύμφωνα με τον ακόλουθο πίνακα.
-Connect to Raspberry Pi
-LCD	Raspberry Pi
-	BCM2835	Board
-VCC	3.3V	3.3V
-GND	GND	GND
-DIN	MOSI	19
-CLK	SCLK	23
-CS	CE0	24
-DS	25	22
-RST	27	13
-BL	18	12
-The 1.8inch LCD uses the PH2.0 8PIN interface, which can be connected to the Raspberry Pi according to the above table: (Please connect according to the pin definition table. The color of the wiring in the picture is for reference only, and the actual color shall prevail.)
- 
-Working with Raspberry Pi
-Enable SPI interface
+| LCD	| Raspberry Pi (BCM2835) | Raspberry Pi (Σύμβολο / Αριθμός Pin) |
+| --- | --- |  --- |
+| VCC	| 3.3V | 3.3V |
+| GND	| GND | GND |
+| DIN	| MOSI | 19 |
+| CLK	| SCLK | 23 |
+| CS	| CE0 | 24 |
+| DS	| 25 | 22 |
+| RST	| 27 | 13 |
+| BL	| 18 | 12 |
+
+
+## ΛΕΙΤΟΥΡΓΙΑ
+
+### SPI interface
+
 PS: If you are using the system of the Bullseye branch, you need to change "apt-get" to "apt", the system of the Bullseye branch only supports Python3. 
 Open terminal, use command to enter the configuration page
 sudo raspi-config
