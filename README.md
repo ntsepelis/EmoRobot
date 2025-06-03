@@ -1,6 +1,6 @@
 # EmoRobot
 
- ![EmoRobot](/fotos/3.png)
+ ![FeelGoodBot-LOGO](/fotos/FeelGoodBot-LOGO.png)
 
 
 ## ΕΙΣΑΓΩΓΗ
@@ -20,6 +20,9 @@
 -	θετικά μηνύματα
  
 ## Η ΠΡΟΤΑΣΗ
+
+ ![FeelGoodBot, your Robo-Motivation](/fotos/FeelGoodBot.jpeg)
+
 Γι’ αυτό σκεφτήκαμε τη δημιουργία ενός  
 
 ***«συναισθηματικού βοηθού»***
